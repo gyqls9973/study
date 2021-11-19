@@ -9,7 +9,7 @@ class BoardService {
     }
 
     createBoards(state) {
-        return axios.get(Board_API_BASE_URL, state)
+        return axios.post(Board_API_BASE_URL, state)
     }
 
 }
