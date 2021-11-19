@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import UserService from "../Service/UserService";
 import {useDispatch, useSelector} from "react-redux";
 import {userRemove, userSave, userSelectRow} from "../Module/UserReducer";
+import UserService from "../Service/BoardService";
 
 function ListUserComponent() {
     const [inputData, setInputData] = useState({
@@ -37,9 +37,9 @@ function ListUserComponent() {
     const {users} = useSelector(state => state.userReducer);
 
     useEffect(() => {
-        UserService.getUsers().then((res) => {
-            setInputData({user: res.data})
-        })
+       UserService.getUsers().then((res) => {
+           setInputData({users: res.data})
+       })
     })
 
     return (
@@ -57,11 +57,12 @@ function ListUserComponent() {
 
                     <tbody>
                     {
-                        users.map(
+                        users && users.map(
                             row =>
                                 <tr key={row.num}>
                                     <td>{row.userid}</td>
                                     <td>{row.password}</td>
+                                    <td>{row.num}</td>
                                 </tr>
                         )
                     }
