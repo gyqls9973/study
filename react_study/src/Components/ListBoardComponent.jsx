@@ -39,7 +39,7 @@ class ListBoardComponent extends Component {
                         {
                             this.state.boards.map(
                                 row =>
-                                    <tr key={row.boardid}>
+                                    <tr key={row.title}>
                                         <td>{row.boardid}</td>
                                         <td>{row.title}</td>
                                         <td>{row.content}</td>

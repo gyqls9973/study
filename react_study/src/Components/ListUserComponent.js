@@ -59,7 +59,7 @@ function ListUserComponent() {
                     {
                         users && users.map(
                             row =>
-                                <tr key={row.num}>
+                                <tr key={row.userid}>
                                     <td>{row.userid}</td>
                                     <td>{row.password}</td>
                                     <td>{row.num}</td>

@@ -8,6 +8,10 @@ class BoardService {
         return axios.get(Board_API_BASE_URL);
     }
 
+    createBoards(state) {
+        return axios.get(Board_API_BASE_URL, state)
+    }
+
 }
 
 export default new BoardService();

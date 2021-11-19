@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
+import {useHistory} from "react-router-dom";
+import BoardService from "../Service/BoardService";
 
-const CreateBoardComponent = (history) => {
+const CreateBoardComponent = () => {
     const [state, setState] = useState({
         title: '',
         content: '',
     });
+    let history = useHistory();
 
     const handleChange = (e) => {
         setState({
@@ -18,8 +21,12 @@ const CreateBoardComponent = (history) => {
         setState({
             title: state.title,
             content: state.content,
+        });
+        console.log('state => ' + JSON.stringify(state));
+
+        BoardService.createBoards(state).then(res => {
+            history.push("/boards");
         })
-        console.log('state => ' + JSON.stringify(state))
     }
 
     return (
@@ -29,7 +36,7 @@ const CreateBoardComponent = (history) => {
                     <div className="card col-md-6 offset-md-3 offset-md-3">
                         <h3 className="text-center">Add Board</h3>
                         <div className="card-body">
-                            <form>
+                            <form onSubmit={handleOnClick}>
                                 <div className="form-group">
                                     <label>BoardTitle</label>
                                     <input placeholder="BoardTitle" name="title"
@@ -45,7 +52,7 @@ const CreateBoardComponent = (history) => {
                                     />
 
                                 </div>
-                                <button className="btn btn-success" onClick={handleOnClick}>Upload</button>&nbsp;&nbsp;
+                                 <button type="submit" className="btn btn-success">Upload</button>&nbsp;&nbsp;
                                 <button className="btn btn-danger" onClick={() => {history.push("/boards")}}>Cancel</button>
                             </form>
                         </div>
