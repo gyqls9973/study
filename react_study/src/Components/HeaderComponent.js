@@ -7,8 +7,8 @@ const HeaderComponent = () => {
             <header>
                 <nav className="navbar navbar-expand-md navbar-dark bg-dark">
                     <div>
-                        <a href="users" className="navbar-brand">User App</a>
-                        <a href="boards" className="navbar-brand">Board App</a>
+                        <a className="navbar-brand"><Link to="/users">User App</Link></a>
+                        <a className="navbar-brand"><Link to="/boards">Board App</Link></a>
                     </div>
                 </nav>
             </header>

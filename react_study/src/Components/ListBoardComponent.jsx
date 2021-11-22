@@ -8,10 +8,22 @@ class ListBoardComponent extends Component {
             boards: []
         }
         this.addBoard = this.addBoard.bind(this);
+        this.editBoard = this.editBoard.bind(this);
+        this.deleteBoard = this.deleteBoard.bind(this);
     }
 
     addBoard() {
         this.props.history.push("/create_boards");
+    }
+
+    editBoard(boardid) {
+        this.props.history.push(`/update_boards/${boardid}`);
+    }
+
+    deleteBoard(boardid) {
+        BoardService.deleteBoards(boardid).then((res) => {
+            this.setState({boards: this.state.boards.filter(boards => boards.boardid !== boardid)});
+        });
     }
 
     componentDidMount() {
@@ -32,6 +44,7 @@ class ListBoardComponent extends Component {
                             <th>boardNum</th>
                             <th>BoardTitle</th>
                             <th>BoardContent</th>
+                            <th>Update&Delete</th>
                         </tr>
                         </thead>
 
@@ -43,6 +56,14 @@ class ListBoardComponent extends Component {
                                         <td>{row.boardid}</td>
                                         <td>{row.title}</td>
                                         <td>{row.content}</td>
+                                        <td>
+                                            <button className="btn btn-info" onClick={() => this.editBoard(row.boardid)}>
+                                                Update
+                                            </button>&nbsp;
+                                            <button className="btn btn-danger" onClick={() => this.deleteBoard(row.boardid)}>
+                                                Delete
+                                            </button>
+                                        </td>
                                     </tr>
                             )
                         }

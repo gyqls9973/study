@@ -68,6 +68,8 @@
     "react-router-dom": "^5.3.0",
     "redux": "^4.1.2",
     "redux-actions": "^2.6.5",
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.4.0",
     "resolve": "1.18.1",
     "resolve-url-loader": "^3.1.2",
     "sass-loader": "^10.0.5",
