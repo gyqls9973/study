@@ -1,24 +1,39 @@
-import React, {useState} from 'react';
-import {useHistory} from "react-router-dom";
-import UserService from "../Service/UserService";
+import React, {useEffect, useState} from 'react';
+import {Redirect, useHistory} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {signIn} from "../Auth";
 
-const ListUserComponent = (props) => {
-    const [userid, setUserid] = useState('');
+const ListUserComponent = (props, login, authenticated, location) => {
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();
+    const dispatch = useDispatch();
 
-    const handleIdChange = (e) => {
-        setUserid(e.target.value);
-    }
-
-    const handlePwChange = (e) => {
-        setPassword(e.target.value);
-    }
-
-    const handleOnSubmit = (e) => {
-        e.preventDefault();
-        console.log(userid, password);
+    const handleClick = () => {
+        try {
+            signIn({email, password})
+            console.log(email, password)
+            sessionStorage.setItem('email', email);
+            sessionStorage.setItem('password', password)
+            console.log(sessionStorage.getItem('email'));
+            console.log(sessionStorage.getItem('password'));
+            history.push("/board")
+        } catch (e) {
+            alert('Failed to login');
+            setEmail('');
+            setPassword('');
         }
+    };
+
+    const [isLogin, setIsLogin] = useState(false);
+    useEffect(() => {
+        if(sessionStorage.getItem('email') === null) {
+            console.log('isLogin ?? :: ', isLogin)
+        } else {
+            setIsLogin(true)
+            console.log('isLogin ?? :: ', isLogin)
+        }
+    })
 
     const handleBtn = () => {
         history.push("/create_users");
@@ -31,19 +46,19 @@ const ListUserComponent = (props) => {
                 <div className="card col-md-6 offset-md-3 offset-md-3">
                     <h3 className="text-center">User Login</h3>
                     <div className="card-body">
-                        <form onSubmit={handleOnSubmit}>
+                        <form onSubmit={handleClick}>
                             <div className="form-group">
                                 <label>User ID</label>
                                 <input placeholder="ID를 입력하세요" name="userid"
-                                       className="form-control" value={userid}
-                                       onChange={handleIdChange}
+                                       className="form-control" value={email}
+                                       onChange={({target: {value}}) => setEmail(value)}
                                 />
                             </div>
                             <div className="form-group">
                                 <label>User PW</label>
                                 <input placeholder="PW를 입력하세요" name="password"
                                        className="form-control" value={password}
-                                       onChange={handlePwChange} type="password"
+                                       onChange={({target: {value}}) => setPassword(value)} type="password"
                                 />
                             </div>
                             <button type="submit" className="btn btn-success">Login</button>&nbsp;&nbsp;

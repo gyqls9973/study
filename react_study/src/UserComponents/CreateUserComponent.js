@@ -24,8 +24,9 @@ const CreateUserComponent = () => {
             password: state.password,
         });
         console.log("state =>" + JSON.stringify(state));
+
         UserService.createUser(state).then((res) => {
-          history.push("/users");
+          history.push("/");
         })
     }
 

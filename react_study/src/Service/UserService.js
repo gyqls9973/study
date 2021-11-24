@@ -11,6 +11,10 @@ class UserService {
         return axios.post(USER_API_BASE_URL, state)
     }
 
+    getUserById(num) {
+        return axios.get(USER_API_BASE_URL + "/" + num);
+    }
+
 
 
 }

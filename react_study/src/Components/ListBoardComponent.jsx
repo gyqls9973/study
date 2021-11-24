@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import BoardService from "../Service/BoardService";
+import {withRouter} from "react-router-dom";
 
 class ListBoardComponent extends Component {
     constructor(props) {
@@ -14,6 +15,7 @@ class ListBoardComponent extends Component {
 
     addBoard() {
         this.props.history.push("/create_boards");
+
     }
 
     editBoard(boardid) {
@@ -32,11 +34,12 @@ class ListBoardComponent extends Component {
         });
     }
 
+
+
     render() {
         return (
             <div>
-                <h2 className="text-center">Board List</h2>
-
+                <h2 className="text-center">Board List </h2>
                 <div className="row">
                     <table className="table table-striped table-bordered">
                         <thead>
@@ -78,4 +81,4 @@ class ListBoardComponent extends Component {
 }
 }
 
-export default ListBoardComponent;
+export default withRouter(ListBoardComponent);

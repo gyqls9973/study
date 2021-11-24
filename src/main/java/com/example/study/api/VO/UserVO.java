@@ -9,19 +9,28 @@ import javax.persistence.*;
 @Table(name = "user")
 public class UserVO {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "num")
+    private Long num;
+
     @Column(name = "userid")
     private String userid;
 
     @Column(name = "password")
     private String password;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long num;
-
     public void UserVO(String userid, String password) {
         this.userid = userid;
         this.password = password;
+    }
+
+    public Long getNum() {
+        return num;
+    }
+
+    public void setNum(Long num) {
+        this.num = num;
     }
 
     public String getUserid() {
@@ -40,11 +49,4 @@ public class UserVO {
         this.password = password;
     }
 
-    public long getNum() {
-        return num;
-    }
-
-    public void setNum(long num) {
-        this.num = num;
-    }
 }
