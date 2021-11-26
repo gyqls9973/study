@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useHistory} from "react-router-dom";
 import BoardService from "../Service/BoardService";
 
-const CreateBoardComponent = () => {
+const CreateBoardComponent = (props) => {
     const [state, setState] = useState({
         title: '',
         content: '',
@@ -19,13 +19,14 @@ const CreateBoardComponent = () => {
     const handleOnClick = (e) => {
         e.preventDefault();
         setState({
+            ...state,
             title: state.title,
             content: state.content,
         });
         console.log('state => ' + JSON.stringify(state));
 
         BoardService.createBoards(state).then(res => {
-            history.push("/boards");
+            history.push("/welcome/user_id");
         })
     }
 
@@ -53,7 +54,7 @@ const CreateBoardComponent = () => {
 
                                 </div>
                                  <button type="submit" className="btn btn-success">Upload</button>&nbsp;&nbsp;
-                                <button className="btn btn-danger" onClick={() => {history.push("/boards")}}>Cancel</button>
+                                <button className="btn btn-danger" onClick={() => {history.push("/welcome/user_id")}}>Cancel</button>
                             </form>
                         </div>
 

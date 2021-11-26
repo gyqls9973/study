@@ -26,7 +26,7 @@ const UpdateBoardComponent = (props) => {
                 title: state.title,
                 content: state.content,
             });
-            history.push("/boards");
+            history.push("/welcome/user_id");
         })
         console.log('setState => ' + JSON.stringify(state));
     }
@@ -55,7 +55,7 @@ const UpdateBoardComponent = (props) => {
 
                                 </div>
                                 <button type="submit" className="btn btn-success">Upload</button>&nbsp;&nbsp;
-                                <button className="btn btn-danger" onClick={() => {history.push("/boards")}}>Cancel</button>
+                                <button className="btn btn-danger" onClick={() => {history.push("/welcome/user_id")}}>Cancel</button>
                             </form>
                         </div>
 

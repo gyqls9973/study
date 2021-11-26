@@ -1,26 +1,30 @@
 import axios from "axios";
 
-const Board_API_BASE_URL = "http://localhost:8081/api/v1/boards"
+const Board_API_BASE_URL = "http://localhost:8081/api/v1/welcome/user_id"
+const http = axios.create({
+    baseURL: "http://localhost:8081/api/v1",
+    headers: {Authorization: `Bearer ${localStorage.getItem('token')}`, 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
+})
 
 class BoardService {
     getBoards() {
-        return axios.get(Board_API_BASE_URL);
+        return http.get(Board_API_BASE_URL);
     }
 
     createBoards(state) {
-        return axios.post(Board_API_BASE_URL, state)
+        return http.post(Board_API_BASE_URL, state)
     }
 
     getBoardsById(boardid) {
-        return axios.get(Board_API_BASE_URL + "/" + boardid);
+        return http.post(Board_API_BASE_URL + "/" + boardid);
     }
 
     updateBoards(state, boardid) {
-        return axios.put(Board_API_BASE_URL + "/" + boardid, state);
+        return http.post(Board_API_BASE_URL + "/upd/" + boardid, state);
     }
 
     deleteBoards(boardid) {
-        return axios.delete(Board_API_BASE_URL + "/" + boardid);
+        return http.get(Board_API_BASE_URL + "/del/" + boardid);
     }
 
 }
