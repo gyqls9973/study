@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import AuthenticationService from './AuthenticationService.js'
+import {withRouter} from "react-router-dom";
 
 class LoginComponent extends Component {
 
@@ -67,4 +68,4 @@ class LoginComponent extends Component {
   }
 }
 
-export default LoginComponent
+export default withRouter(LoginComponent);

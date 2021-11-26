@@ -1,11 +1,10 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
 import AuthenticationService from './AuthenticationService.js'
 import {withRouter} from "react-router-dom";
 
 
-class JwtHeaderComponent extends Component {
-  render() {
+const JwtHeaderComponent = () => {
     const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
 
     console.log("===Headeromponent===");
@@ -27,7 +26,6 @@ class JwtHeaderComponent extends Component {
         </nav>
       </header>
     )
-  }
 }
 
 export default withRouter(JwtHeaderComponent);
