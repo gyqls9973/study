@@ -5,6 +5,7 @@ import {signIn} from "../Auth";
 import axios from "axios";
 
 const ListUserComponent = (props, login, authenticated, location) => {
+    // 해당 페이지 기능 사용 안함
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();

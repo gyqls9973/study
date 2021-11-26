@@ -3,6 +3,7 @@ import {useHistory} from "react-router-dom";
 import UserService from "../Service/UserService";
 
 const CreateUserComponent = () => {
+    // 해당 페이지 기능 사용 안함
     const [state, setState] = useState({
         userid: '',
         password: '',
