@@ -3,7 +3,6 @@ import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-d
 import LoginComponent from "./LoginComponent";
 import WelcomeComponent from "./WelcomComponent";
 import LogoutComponent from "./LogoutComponent";
-import TestComponent from "./TestComponent";
 import ErrorComponent from "./ErrorComponent";
 import FooterComponent from "./FooterComponent";
 import JwtHeaderComponent from "./JwtHeaderComponent";
@@ -24,7 +23,6 @@ class LoginApp extends Component {
               <Route path="/update_boards/:boardid" component={UpdateBoardComponent}/>
               <Route path="/welcome/:name" component={WelcomeComponent}/>
               <Route path="/logout" component={LogoutComponent}/>
-              <Route path="/test" component={TestComponent}/>
               <Route component={ErrorComponent}/>
             </Switch>
             <FooterComponent/>
