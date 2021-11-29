@@ -17,10 +17,6 @@ class AuthenticationService {
     this.setupAxiosInterceptors();
   }
 
-  createJWTToken(token) {
-    return 'Bearer ' + token
-  }
-
   //axios request에 담아주기
   setupAxiosInterceptors() {
     axios.interceptors.request.use(

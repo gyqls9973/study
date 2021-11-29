@@ -1,13 +1,13 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import LoginComponent from "../Components/LoginComponent";
-import WelcomeComponent from "../Components/WelcomComponent";
-import LogoutComponent from "../Components/LogoutComponent";
-import ErrorComponent from "../Components/ErrorComponent";
-import FooterComponent from "../Components/FooterComponent";
-import JwtHeaderComponent from "../Components/JwtHeaderComponent";
-import CreateBoardComponent from "../Components/CreateBoardComponent";
-import UpdateBoardComponent from "../Components/UpdateBoardComponent";
+import LoginComponent from "../JwtComponent/LoginComponent";
+import WelcomeComponent from "../JwtComponent/WelcomComponent";
+import LogoutComponent from "../JwtComponent/LogoutComponent";
+import ErrorComponent from "../JwtComponent/ErrorComponent";
+import FooterComponent from "../JwtComponent/FooterComponent";
+import JwtHeaderComponent from "../JwtComponent/JwtHeaderComponent";
+import CreateBoardComponent from "../BoardComponents/CreateBoardComponent";
+import UpdateBoardComponent from "../BoardComponents/UpdateBoardComponent";
 
 function LoginApp() {
     return (
