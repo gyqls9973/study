@@ -4,7 +4,7 @@ import AuthenticationService from '../Service/AuthenticationService.js'
 import {withRouter} from "react-router-dom";
 
 
-const JwtHeaderComponent = () => {
+function JwtHeaderComponent() {
     const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
 
     console.log("===Headeromponent===");

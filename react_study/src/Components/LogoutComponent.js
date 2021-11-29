@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LogoutComponent = () => {
+function LogoutComponent() {
   return (
     <div>
         <h1>You are logged Out</h1>
