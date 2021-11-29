@@ -1,4 +1,4 @@
-package com.example.study.api.Jwt;
+package com.example.study.api.Service;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

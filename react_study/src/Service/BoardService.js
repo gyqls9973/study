@@ -3,7 +3,7 @@ import axios from "axios";
 const Board_API_BASE_URL = "http://localhost:8081/api/v1/welcome/user_id"
 const http = axios.create({
     baseURL: "http://localhost:8081/api/v1",
-    headers: {Authorization: `Bearer ${localStorage.getItem('token')}`, 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
+    headers: {Authorization: `Bearer ${localStorage.getItem('token')}`, 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*" }
 })
 
 class BoardService {
@@ -20,11 +20,11 @@ class BoardService {
     }
 
     updateBoards(state, boardid) {
-        return http.post(Board_API_BASE_URL + "/upd/" + boardid, state);
+        return http.put(Board_API_BASE_URL + "/upd/" + boardid, state);
     }
 
     deleteBoards(boardid) {
-        return http.get(Board_API_BASE_URL + "/del/" + boardid);
+        return http.delete(Board_API_BASE_URL + "/del/" + boardid);
     }
 
 }

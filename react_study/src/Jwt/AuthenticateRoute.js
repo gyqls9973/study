@@ -1,8 +1,8 @@
 import React from 'react'
 import {Route, Redirect} from 'react-router-dom'
-import AuthenticationService from "./AuthenticationService";
+import AuthenticationService from "../Service/AuthenticationService";
 
-const AuthenticatedRoute = () => {
+function AuthenticatedRoute() {
     if(AuthenticationService.isUserLoggedIn()) {
       return <Route {...this.props}/>
     } else {

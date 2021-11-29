@@ -1,4 +1,4 @@
-package com.example.study.api.Jwt;
+package com.example.study.api.Exception;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

@@ -1,4 +1,4 @@
-package com.example.study.api.Jwt;
+package com.example.study.api.Model;
 
 import java.io.Serializable;
 

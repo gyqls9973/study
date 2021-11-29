@@ -1,4 +1,4 @@
-package com.example.study.api.VO;
+package com.example.study.api.Model;
 
 import lombok.Data;
 

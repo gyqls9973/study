@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useHistory} from "react-router-dom";
 import BoardService from "../Service/BoardService";
 
-const UpdateBoardComponent = (props) => {
+function UpdateBoardComponent(props) {
     const [state, setState] = useState({
         boardid: props.match.params.boardid,
         title: '',

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useHistory} from "react-router-dom";
 import BoardService from "../Service/BoardService";
 
-const CreateBoardComponent = (props) => {
+function CreateBoardComponent (props) {
     const [state, setState] = useState({
         title: '',
         content: '',

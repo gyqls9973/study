@@ -1,11 +1,11 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import LoginComponent from "./LoginComponent";
-import WelcomeComponent from "./WelcomComponent";
-import LogoutComponent from "./LogoutComponent";
-import ErrorComponent from "./ErrorComponent";
-import FooterComponent from "./FooterComponent";
-import JwtHeaderComponent from "./JwtHeaderComponent";
+import LoginComponent from "../Components/LoginComponent";
+import WelcomeComponent from "../Components/WelcomComponent";
+import LogoutComponent from "../Components/LogoutComponent";
+import ErrorComponent from "../Components/ErrorComponent";
+import FooterComponent from "../Components/FooterComponent";
+import JwtHeaderComponent from "../Components/JwtHeaderComponent";
 import CreateBoardComponent from "../Components/CreateBoardComponent";
 import UpdateBoardComponent from "../Components/UpdateBoardComponent";
 

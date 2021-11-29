@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import AuthenticationService from './AuthenticationService.js'
+import AuthenticationService from '../Service/AuthenticationService.js'
 import {withRouter} from "react-router-dom";
 
 

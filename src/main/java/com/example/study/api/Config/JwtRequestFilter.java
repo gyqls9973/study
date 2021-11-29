@@ -1,7 +1,11 @@
-package com.example.study.api.Jwt;
+package com.example.study.api.Config;
 
+import com.example.study.api.Service.JwtUserDetailsService;
+import com.example.study.api.Util.JwtTokenUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -38,7 +42,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             jwtToken = requestTokenHeader.substring(7);
             try {
                 username = jwtTokenUtil.getUsernameFromToken(jwtToken);
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) { //적합하지 않을 때
                 System.out.println("Unable to get JWT Token");
             } catch (ExpiredJwtException e) {
                 System.out.println("JWT Token has expired");
@@ -59,6 +63,21 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 usernamePasswordAuthenticationToken
                         .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+            }
+            if(HttpMethod.OPTIONS.name().equalsIgnoreCase(request.getMethod())) {
+                HttpServletResponse res = (HttpServletResponse) response;
+                HttpServletRequest req = (HttpServletRequest) request;
+                res.setHeader("Access-Control-Allow-Origin", "*");
+                res.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT, OPTIONS");     //허용할 request http METHOD : POST, GET, DELETE, PUT
+                res.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With,observe");
+
+                if(req.getMethod().equals(HttpMethod.OPTIONS.name())){
+                    res.setStatus(HttpStatus.OK.value());
+                }else{
+                    chain.doFilter(request, response);
+                }
+                response.setStatus(HttpServletResponse.SC_OK);
+                return;
             }
         }
         chain.doFilter(request, response);

@@ -1,5 +1,6 @@
-package com.example.study.api.Jwt;
+package com.example.study.api.Config;
 
+import com.example.study.api.Exception.JwtAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsUtils;
 
 @Configuration
 @EnableWebSecurity
@@ -29,6 +30,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
+
+    @Autowired
+    private WebConfig webConfig;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -48,7 +52,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+        //webCors설정을 해주더라도 security를 통해 로그인이 되어질 때 security에서 Cors를 막을 수 있기에 설정해줘야함
+        httpSecurity.cors() //.configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
+                //밑에 설정이 없다면 CORS preflight 요청이 정상적으로 처리 되지 못해 CORS요청이 이루어지지 않음
+                .disable().authorizeRequests().requestMatchers(CorsUtils::isPreFlightRequest).permitAll();
         httpSecurity.csrf().disable()
                 .authorizeRequests().antMatchers("/authenticate").permitAll().
                         anyRequest().authenticated().and().

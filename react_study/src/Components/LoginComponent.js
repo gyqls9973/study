@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import AuthenticationService from './AuthenticationService.js'
+import AuthenticationService from '../Service/AuthenticationService.js'
 import {withRouter} from "react-router-dom";
 
 class LoginComponent extends Component {
